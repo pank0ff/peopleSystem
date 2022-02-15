@@ -2,26 +2,25 @@
 
 <@c.page>
     List of users
-    <a href="/login">logout</a>
-    <table>
+    <table class="table table-bordered">
         <thead>
         <tr>
-            <th></th>
-            <th>Id</th>
-            <th>Name</th>
-            <th>Role</th>
-            <th>Email</th>
-            <th>Reg date</th>
-            <th>Last conn</th>
-            <th></th>
-            <th></th>
+            <th scope="col">#</th>
+            <th scope="col">Id</th>
+            <th scope="col">Name</th>
+            <th scope="col">Role</th>
+            <th scope="col">Email</th>
+            <th scope="col">Reg date</th>
+            <th scope="col">Last conn</th>
+            <th scope="col"></th>
+            <th scope="col"></th>
         </tr>
         </thead>
         <tbody>
         <#list users as user>
             <tr>
                 <form action="/user" method="post">
-                    <td>
+                    <th scope="row">
                         <input type="hidden" name="username" value="${user.username}">
                         <#list user.roles as role>
                             <div>
@@ -31,7 +30,7 @@
                         </#list>
                         <input type="hidden" value="${user.id}" name="userId">
                         <input type="hidden" value="${_csrf.token}" name="_csrf">
-                    </td>
+                    </th>
                     <td>${user.id}</td>
                     <td>${user.username}</td>
                     <td><#list user.roles as role>${role}<#sep>, </#list></td>
@@ -47,6 +46,11 @@
                         <input type="hidden" value="${user.id}" name="userId">
                     <input type="hidden" value="${_csrf.token}" name="_csrf">
                     <button type="submit">Block</button></form></td>
+                <td><form action="/userDelete" method="post">
+                <input type="hidden" name="username" value="${user.username}">
+                <input type="hidden" value="${user.id}" name="userId">
+                <input type="hidden" value="${_csrf.token}" name="_csrf">
+                <button type="submit">Delete</button></form></td>
 
             </tr>
         </#list>

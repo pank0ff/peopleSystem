@@ -9,10 +9,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Arrays;
-import java.util.Date;
-import java.util.Map;
-import java.util.Set;
+import javax.servlet.http.HttpSession;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @Controller
@@ -61,7 +59,7 @@ public class UserController {
 
         return "redirect:/user";
     }
-    @PostMapping("/user")
+    @RequestMapping("/deleteUser")
     public String userDelete(
             @RequestParam("userId") User user
     ) {
