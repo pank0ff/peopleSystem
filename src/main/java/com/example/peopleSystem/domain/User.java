@@ -1,5 +1,8 @@
 package com.example.peopleSystem.domain;
 
+import com.example.peopleSystem.repos.UserRepo;
+import com.example.peopleSystem.service.UserService;
+import org.springframework.security.authentication.event.AuthenticationSuccessEvent;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import javax.persistence.*;

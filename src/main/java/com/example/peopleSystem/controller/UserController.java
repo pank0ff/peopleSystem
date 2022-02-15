@@ -10,6 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Arrays;
+import java.util.Date;
 import java.util.Map;
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -24,7 +25,6 @@ public class UserController {
     @GetMapping
     public String userList(Model model) {
         model.addAttribute("users", userRepo.findAll());
-
         return "userList";
     }
 
@@ -59,6 +59,13 @@ public class UserController {
 
         userRepo.save(user);
 
+        return "redirect:/user";
+    }
+    @PostMapping("/user")
+    public String userDelete(
+            @RequestParam("userId") User user
+    ) {
+        userRepo.delete(user);
         return "redirect:/user";
     }
 }
