@@ -9,7 +9,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import javax.servlet.http.HttpSession;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -59,11 +58,10 @@ public class UserController {
 
         return "redirect:/user";
     }
-    @RequestMapping("/deleteUser")
-    public String userDelete(
-            @RequestParam("userId") User user
-    ) {
-        userRepo.delete(user);
-        return "redirect:/user";
+
+    @GetMapping("/user/delete/{id}")
+    public String userDelete(@PathVariable("id") long id, Map<String, Object> model) {
+       userRepo.deleteById(id);
+        return "usrDel";
     }
 }

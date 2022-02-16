@@ -16,6 +16,6 @@
                     <a class="nav-link" href="/user">User list</a>
                 </li>
         </ul>
-        <@l.logout />
+            <@l.logout />
     </div>
 </nav>

@@ -44,13 +44,13 @@
                 <td><form action="/user" method="post">
                         <input type="hidden" name="username" value="${user.username}">
                         <input type="hidden" value="${user.id}" name="userId">
-                    <input type="hidden" value="${_csrf.token}" name="_csrf">
-                    <button type="submit">Block</button></form></td>
-                <td><form action="/userDelete" method="post">
-                <input type="hidden" name="username" value="${user.username}">
-                <input type="hidden" value="${user.id}" name="userId">
-                <input type="hidden" value="${_csrf.token}" name="_csrf">
-                <button type="submit">Delete</button></form></td>
+                        <input type="hidden" value="${_csrf.token}" name="_csrf">
+                        <button type="submit">Block</button></form></td>
+                <td><form action="/user/delete/${user.id}" method="post">
+                        <input type="hidden" value="${user.id}" name="userId">
+                        <input type="hidden" value="${_csrf.token}" name="_csrf">
+                        <button type="submit">Delete </button>
+                    </form></td>
 
             </tr>
         </#list>
